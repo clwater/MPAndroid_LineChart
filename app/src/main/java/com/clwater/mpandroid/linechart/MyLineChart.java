@@ -32,30 +32,22 @@ public class MyLineChart extends LineChart {
     }
 
     /**
-     * 所有覆盖物是否为空
-     *
-     * @return TRUE FALSE
+     * @description 检查相关覆盖物是否为空
      */
     public boolean isMarkerAllNull() {
         return reportInfoMarkerViewWeakReference == null || reportInfoMarkerViewWeakReference.get() == null
                 || reportPointMarkerViewWeakReference == null || reportPointMarkerViewWeakReference.get() == null;
-//                && mRoundMarkerReference.get() == null && mPositionMarkerReference.get() == null;
     }
 
     public void setReportInfoMarkerView(ReportInfoMarkerView reportInfoMarkerView) {
         reportInfoMarkerViewWeakReference = new WeakReference<>(reportInfoMarkerView);
     }
-//
+
     public void setReportPointMarkerView(ReportPointMarkerView roundMarker) {
         reportPointMarkerViewWeakReference = new WeakReference<>(roundMarker);
     }
-//
-//    public void setPositionMarker(PositionMarker positionMarker) {
-//        mPositionMarkerReference = new WeakReference<>(positionMarker);
-//    }
-
-
     /**
+     * @description
      * 复制父类的 drawMarkers方法，并且更换上自己的markerView
      * draws all MarkerViews on the highlighted positions
      */
@@ -67,8 +59,7 @@ public class MyLineChart extends LineChart {
         }
         ReportInfoMarkerView reportInfoMarkerView = reportInfoMarkerViewWeakReference.get();
         ReportPointMarkerView reportPointMarkerView = reportPointMarkerViewWeakReference.get();
-//        RoundMarker mRoundMarker = mRoundMarkerReference.get();
-//        PositionMarker mPositionMarker = mPositionMarkerReference.get();
+
 
         // if there is no marker view or drawing marker is disabled
         if (!isDrawMarkersEnabled() || !valuesToHighlight())
@@ -95,15 +86,18 @@ public class MyLineChart extends LineChart {
                 continue;
             }
 
+            //在对应点上添加选择信息覆盖物
             reportInfoMarkerView.refreshContent(e, highlight);
             reportInfoMarkerView.draw(canvas, pos[0], pos[1] - reportInfoMarkerView.getHeight() / 2);
-//
+
+            //在对挺点位置条件选择点覆盖物
             reportPointMarkerView.refreshContent(e, highlight);
             reportPointMarkerView.draw(canvas, pos[0], pos[1] + reportPointMarkerView.getHeight() / 2);
 
+            //判断是否可以绘制虚线
             if (this.getHeight() - 50 > pos[1] + reportPointMarkerView.getHeight() / 2) {
 
-                //绘制虚线
+                //通过canvas绘制虚线
                 Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
                 mPaint.setColor(this.getContext().getColor(R.color.color_orange));
                 mPaint.setStyle(Paint.Style.STROKE);

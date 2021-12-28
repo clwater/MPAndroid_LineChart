@@ -12,8 +12,8 @@ import com.github.mikephil.charting.utils.MPPointF;
 public class ReportInfoMarkerView extends MarkerView {
 
 
-    private TextView tvContent;
-    private String unit;
+    private final TextView tvContent;
+    private final String unit;
 
     public ReportInfoMarkerView(Context context, String unit) {
         super(context, R.layout.weight_custom_marker_view);
@@ -21,7 +21,6 @@ public class ReportInfoMarkerView extends MarkerView {
         this.unit = unit;
     }
 
-    //回调函数每次MarkerView重绘,可以用来更新内容(用户界面)
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
         tvContent.setText("" + e.getY() + (TextUtils.isEmpty(unit)? "" : (" " + unit)));
