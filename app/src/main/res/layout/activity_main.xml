@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_222222"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="电压"
+        android:textSize="32sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/tv_report_name"
+        android:textColor="@color/white"/>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_report_name"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/rg_report">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/selector_radio"
+            android:button="@null"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:id="@+id/rb_report_day"
+            android:text="日"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/selector_radio"
+            android:button="@null"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginStart="4dp"
+            android:id="@+id/rb_report_month"
+            android:text="月"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/selector_radio"
+            android:button="@null"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:id="@+id/rb_report_year"
+            android:text="年"/>
+
+    </RadioGroup>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/color_222222"
+        android:id="@+id/iv_report_info"
+        android:src="@drawable/bg_report_line"
+        app:layout_constraintBottom_toTopOf="@+id/ll_report_bottom"/>
+
+    <com.panasonic.smartplug.weight.ReportLineChart
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/lc_report_info"
+        app:layout_constraintTop_toBottomOf="@id/rg_report"
+        app:layout_constraintBottom_toTopOf="@id/ll_report_bottom"
+        android:layout_marginBottom="100dp"/>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/color_dddddd"
+        android:id="@+id/ll_report_bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="64dp"
+        app:cardBackgroundColor="@color/color_eeeeee"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bt_report_choose"
+                app:layout_constraintBottom_toBottomOf="@id/bt_report_choose"
+                android:layout_marginStart="12dp"
+                android:id="@+id/tv_report_info_date"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_report_choose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="选择日期"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/bt_report_choose"
+                android:background="#4DAAAAAA"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="---"
+                android:textSize="48sp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/tv_report_choose_text"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/bt_report_choose"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kwh"
+                app:layout_constraintStart_toEndOf="@id/tv_report_choose_text"
+                app:layout_constraintBottom_toBottomOf="@id/tv_report_choose_text"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_report_choose_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/color_666666"
+                android:id="@+id/tv_report_choose_diff_week"
+                android:drawablePadding="4dp"
+                android:text="较本周13%"
+                app:drawableStartCompat="@mipmap/icon_arrow_diff_up" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_report_choose_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="12dp"
+                android:textColor="@color/color_666666"
+                android:id="@+id/tv_report_choose_diff_month"
+                android:drawableLeft="@mipmap/icon_arrow_diff_down"
+                android:drawablePadding="4dp"
+                android:text="较本月13%"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
